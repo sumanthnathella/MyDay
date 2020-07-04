@@ -1,7 +1,6 @@
 import {StyleSheet, Text, View, TextInput, Alert, TouchableHighlight, Image} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
-import { useNavigation } from '@react-navigation/native';
 
 const styles = StyleSheet.create({
   container: {
