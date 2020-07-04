@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         marginBottom: 8
     },
     dateText: {
-        color: "#fff",
+        color: "#CBD2D9",
         fontSize: 14,
         textAlign: "left"
     },
@@ -54,7 +54,7 @@ export default class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        date: moment().format(`MMMM Do YYYY`)
+        date: moment().format(`MMMM DD, YYYY`)
     };
   }
   render() {

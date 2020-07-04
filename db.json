@@ -1,0 +1,34 @@
+{
+  "todo": [
+    {
+      "title": "Yoga / Meditation",
+      "time": "30 MINS",
+      "id": "05dafc66-bd91-43a0-a752-4dc40f039144"
+    },
+    {
+      "title": "Morning Stand Up",
+      "time": "15 MINS",
+      "id": "001c9b6d-00a9-465c-a2d3-afb7176a0a87"
+    },
+    {
+      "title": "Design Work",
+      "time": "4 HOURS",
+      "id": "4cdbe78f-54df-4769-bf3b-02a930161ec5"
+    },
+    {
+      "title": "Read Fiction",
+      "time": "30 MINS",
+      "id": "81066e94-5e2a-410a-986c-67dcc72d3a82"
+    },
+    {
+      "title": "Sketching",
+      "time": "30 MINS",
+      "id": "81066e94-5e2a-410a-986c-67dcc72d3a82"
+    },
+    {
+      "title": "Evening Stand Up",
+      "time": "15 MINS",
+      "id": "81066e94-5e2a-410a-986c-67dcc72d3a82"
+    }
+  ]
+}
