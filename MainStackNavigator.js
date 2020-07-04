@@ -16,7 +16,7 @@ function MainStackNavigator() {
         <Stack.Screen
           name="Login"
           component={Login}
-          options={{ title: "Login Screen" }}
+          options={{ title: "Login" }}
         />
       </Stack.Navigator>
     </NavigationContainer>

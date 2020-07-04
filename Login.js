@@ -18,6 +18,17 @@ const styles = StyleSheet.create({
     fontFamily: "Cochin",
     marginTop: 160
   },
+  helloText: {
+    color: "#fff",
+    fontSize: 24,
+    textAlign: "left",
+    marginBottom: 8
+  },
+  myDayText: {
+    color: "#fff",
+    fontSize: 40,
+    textAlign: "left"
+  }
 });
 
 function Login() {

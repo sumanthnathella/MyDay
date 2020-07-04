@@ -92,7 +92,7 @@ function Home(props) {
           <TouchableHighlight
             underlayColor="#CCC"
             style={styles.loginButton}
-            onPress={() => navigation.navigate('Login')}>
+            onPress={() => navigation.navigate('Login')}
           >
             <View style={styles.loginButtonTextContainer}>
               <Text style={styles.loginButtonText}>Continue with Email</Text>
