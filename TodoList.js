@@ -1,7 +1,17 @@
-import React, {Component} from "react";
-import Buffer from 'safe-buffer'
-import {FlatList, Modal, SafeAreaView, StyleSheet, Text, TextInput, TouchableHighlight, View} from "react-native";
-import {StatusBar} from "expo-status-bar";
+import React, { Component } from "react";
+import Buffer from "safe-buffer";
+import {
+  FlatList,
+  Modal,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableHighlight,
+  View,
+  Alert
+} from "react-native";
+import { StatusBar } from "expo-status-bar";
 import moment from "moment";
 import TodoCard from "./TodoCard.js";
 
@@ -136,13 +146,16 @@ export default class TodoList extends Component {
   };
 
   addTask() {
-    const { todos, addTaskTitle, addTaskTime } = this.state;
+    const { todos, addTaskTitle, addTaskTime, modalVisible } = this.state;
+    const todosfromState = todos;
     const newTodo = {
       title: addTaskTitle,
       time: addTaskTime,
       id: this.uuid.v4()
     };
-    this.setState({ todos: { ...todos, newTodo } });
+    // Alert.alert("New Task", `${todosfromState} + ${addTaskTitle}+ ${addTaskTime}`);
+    todosfromState.push(newTodo);
+    this.setState({ todos: todosfromState, modalVisible: !modalVisible });
   }
 
   render() {
@@ -175,9 +188,11 @@ export default class TodoList extends Component {
               <Text style={styles.addNewTaskText}>Add New Task</Text>
               <TextInput
                 placeholderTextColor={"#CBD2D9"}
-                placeholder="Enter your task name?"
+                placeholder="Enter you task name"
                 value={addTaskTitle}
-                onChangeText={addTaskTitle => this.setState({ addTaskTitle })}
+                onChangeText={addTaskTitle =>
+                  this.setState({ addTaskTitle: addTaskTitle })
+                }
                 label="addTaskTitle"
                 style={styles.input}
               />
@@ -185,7 +200,9 @@ export default class TodoList extends Component {
                 placeholderTextColor={"#CBD2D9"}
                 placeholder="How long is this gonna take?"
                 value={addTaskTime}
-                onChangeText={addTaskTime => this.setState({ addTaskTime })}
+                onChangeText={addTaskTime =>
+                  this.setState({ addTaskTime: addTaskTime })
+                }
                 label="addTaskTime"
                 style={styles.input}
               />
@@ -200,7 +217,6 @@ export default class TodoList extends Component {
                     marginRight: 24
                   }}
                   onPress={() => {
-                    this.addTask();
                     this.setModalVisible(!modalVisible);
                   }}
                 >
@@ -209,7 +225,7 @@ export default class TodoList extends Component {
                 <TouchableHighlight
                   style={{ ...styles.modalButton }}
                   onPress={() => {
-                    this.setModalVisible(!modalVisible);
+                    this.addTask();
                   }}
                 >
                   <Text style={styles.modalButtonText}>Save Task</Text>
