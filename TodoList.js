@@ -1,18 +1,11 @@
-import React, { Component } from "react";
-import {
-  Image,
-  Text,
-  TouchableHighlight,
-  View,
-  StyleSheet,
-  SafeAreaView,
-  FlatList,
-  Modal,
-  TextInput
-} from "react-native";
-import { StatusBar } from "expo-status-bar";
+import React, {Component} from "react";
+import Buffer from 'safe-buffer'
+import {FlatList, Modal, SafeAreaView, StyleSheet, Text, TextInput, TouchableHighlight, View} from "react-native";
+import {StatusBar} from "expo-status-bar";
 import moment from "moment";
 import TodoCard from "./TodoCard.js";
+
+global.Buffer = Buffer;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
