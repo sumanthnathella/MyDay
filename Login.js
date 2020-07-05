@@ -61,8 +61,7 @@ const styles = StyleSheet.create({
     width: 320,
     height: 36,
     paddingLeft:17,
-    color: "#fff",
-
+    color: "#fff"
   },
   loginButton: {
     width: 200,
@@ -116,7 +115,7 @@ export default class Login extends Component {
           <Text style={styles.loginFormLabels}>EMAIL ADDRESS</Text>
           <View style={styles.loginFormInputContainer}>
             <Image
-                source={require("./assets/icon-email.png")}
+                source={require("./assets/icon-mail-temp.png")}
                 style={styles.ImageIconStyle}
             />
             <TextInput
@@ -130,7 +129,7 @@ export default class Login extends Component {
           <Text style={styles.loginFormLabels}>PASSWORD</Text>
           <View style={styles.loginFormInputContainer}>
             <Image
-                source={require("./assets/icon-email.png")}
+                source={require("./assets/icon-key-temp.png")}
                 style={styles.ImageIconStyle}
             />
             <TextInput
