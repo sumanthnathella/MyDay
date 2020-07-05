@@ -8,8 +8,7 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  View,
-  Alert
+  View
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import moment from "moment";
@@ -33,7 +32,7 @@ const styles = StyleSheet.create({
     fontFamily: "Cochin",
     marginTop: 160
   },
-  loginButtonsContainer: {
+  addNewTaskButtonContainer: {
     // marginBottom: 16
     paddingBottom: 50
   },
@@ -48,16 +47,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "left"
   },
-  loginButton: {
+  addNewTaskButton: {
     width: 200,
     height: 48,
-    color: "#fff",
     alignSelf: "center",
     backgroundColor: "#2B6ABF",
     borderRadius: 8,
     marginBottom: 24
   },
-  loginButtonText: {
+  addNewTaskButtonText: {
     color: "#fff",
     fontSize: 14,
     paddingTop: 15,
@@ -112,7 +110,6 @@ const styles = StyleSheet.create({
   modalButton: {
     width: 200,
     height: 48,
-    color: "#CBD2D9",
     alignSelf: "center",
     backgroundColor: "#2B6ABF",
     borderRadius: 8
@@ -127,7 +124,6 @@ const styles = StyleSheet.create({
 export default class TodoList extends Component {
   constructor(props) {
     super(props);
-    this.uuid = require("react-native-uuid");
     this.state = {
       date: moment().format(`MMMM DD, YYYY`),
       todos: [],
@@ -148,14 +144,29 @@ export default class TodoList extends Component {
   addTask() {
     const { todos, addTaskTitle, addTaskTime, modalVisible } = this.state;
     const todosfromState = todos;
+    const lastTodo = todosfromState[todosfromState.length - 1];
     const newTodo = {
       title: addTaskTitle,
       time: addTaskTime,
-      id: this.uuid.v4()
+      checked: false,
+      id: lastTodo.id + 1
     };
     // Alert.alert("New Task", `${todosfromState} + ${addTaskTitle}+ ${addTaskTime}`);
     todosfromState.push(newTodo);
     this.setState({ todos: todosfromState, modalVisible: !modalVisible });
+  }
+
+  setChecked(todo) {
+    let stateChangedTodo = [];
+    this.state.todos.forEach(stateTodo => {
+      if (stateTodo.id !== todo.id) {
+        stateChangedTodo.push(stateTodo);
+      } else {
+        const newTodo = { ...todo, checked: todo.checked };
+        stateChangedTodo.push(newTodo);
+      }
+    });
+    this.setState({ todos: stateChangedTodo });
   }
 
   render() {
@@ -171,17 +182,19 @@ export default class TodoList extends Component {
         <SafeAreaView>
           <FlatList
             data={this.state.todos}
-            renderItem={({ item }) => <TodoCard todo={item} />}
-            keyExtractor={item => item.id}
+            renderItem={({ item }) => (
+              <TodoCard todo={item} setChecked={this.setChecked.bind(this)} />
+            )}
+            keyExtractor={item => item.id.toString()}
           />
         </SafeAreaView>
         <Modal
           animationType="slide"
           transparent={true}
           visible={modalVisible}
-          onRequestClose={() => {
-            Alert.alert("Modal has been closed.");
-          }}
+          // onRequestClose={() => {
+          //   Alert.alert("Modal has been closed.");
+          // }}
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
@@ -234,15 +247,16 @@ export default class TodoList extends Component {
             </View>
           </View>
         </Modal>
-        <View style={styles.loginButtonsContainer}>
+
+        <View style={styles.addNewTaskButtonContainer}>
           <TouchableHighlight
             underlayColor="#CCC"
-            style={styles.loginButton}
+            style={styles.addNewTaskButton}
             onPress={() => {
               this.setModalVisible(true);
             }}
           >
-            <Text style={styles.loginButtonText}>+ Add New Task</Text>
+            <Text style={styles.addNewTaskButtonText}>+ Add New Task</Text>
           </TouchableHighlight>
         </View>
         <StatusBar style="auto" />
