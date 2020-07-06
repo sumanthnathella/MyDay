@@ -1,4 +1,12 @@
-import {StyleSheet, Text, View, TextInput, Alert, TouchableHighlight, Image} from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Alert,
+  TouchableHighlight,
+  Image
+} from "react-native";
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 
@@ -12,18 +20,18 @@ const styles = StyleSheet.create({
     fontSize: 40
   },
   greetingContainer: {
-    flexDirection: 'row',
-    fontFamily: 'System',
+    flexDirection: "row",
+    fontFamily: "System",
     marginTop: 160
   },
   EmailIconStyle: {
     height: 48,
     width: 48,
-    marginTop: 10,
+    marginTop: 10
   },
   greetingTextContainer: {
-    marginLeft:24,
-    fontFamily: 'System',
+    marginLeft: 24,
+    fontFamily: "System"
   },
   continueText: {
     color: "#fff",
@@ -38,30 +46,30 @@ const styles = StyleSheet.create({
   },
   loginFormContainer: {
     flex: 1,
-    marginTop:70
+    marginTop: 70
   },
   loginFormLabels: {
     textAlign: "left",
-    fontSize:12,
-    color:'#9AA5B1'
+    fontSize: 12,
+    color: "#9AA5B1"
   },
   loginFormInputContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     borderBottomWidth: 1,
-    borderColor: '#fff',
-    marginBottom:40
+    borderColor: "#fff",
+    marginBottom: 40
   },
   ImageIconStyle: {
     height: 14,
     width: 17,
-    marginLeft:1,
-    marginBottom:10,
-    alignSelf:'flex-end'
+    marginLeft: 1,
+    marginBottom: 10,
+    alignSelf: "flex-end"
   },
   input: {
     width: 320,
     height: 36,
-    paddingLeft:17,
+    paddingLeft: 17,
     color: "#fff"
   },
   loginButton: {
@@ -76,7 +84,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 14,
     paddingTop: 15,
-    textAlign:"center"
+    textAlign: "center"
   }
 });
 
@@ -103,8 +111,8 @@ export default class Login extends Component {
       <View style={styles.container}>
         <View style={styles.greetingContainer}>
           <Image
-              source={require("./assets/icon-email.png")}
-              style={styles.EmailIconStyle}
+            source={require("./assets/icon-email.png")}
+            style={styles.EmailIconStyle}
           />
           <View style={styles.greetingTextContainer}>
             <Text style={styles.continueText}>Continue with your</Text>
@@ -115,38 +123,47 @@ export default class Login extends Component {
           <Text style={styles.loginFormLabels}>EMAIL ADDRESS</Text>
           <View style={styles.loginFormInputContainer}>
             <Image
-                source={require("./assets/icon-mail-temp.png")}
-                style={styles.ImageIconStyle}
+              source={require("./assets/icon-mail-temp.png")}
+              style={styles.ImageIconStyle}
             />
             <TextInput
-                value={this.state.username}
-                onChangeText={username => this.setState({ username })}
-                label="Email"
-                style={styles.input}
+              value={this.state.username}
+              onChangeText={username => this.setState({ username })}
+              label="Email"
+              style={styles.input}
             />
           </View>
 
           <Text style={styles.loginFormLabels}>PASSWORD</Text>
           <View style={styles.loginFormInputContainer}>
             <Image
-                source={require("./assets/icon-key-temp.png")}
-                style={styles.ImageIconStyle}
+              source={require("./assets/icon-key-temp.png")}
+              style={styles.ImageIconStyle}
             />
             <TextInput
-                value={this.state.password}
-                onChangeText={password => this.setState({ password })}
-                label="Password"
-                secureTextEntry={true}
-                style={styles.input}
+              value={this.state.password}
+              onChangeText={password => this.setState({ password })}
+              label="Password"
+              secureTextEntry={true}
+              style={styles.input}
             />
           </View>
           <TouchableHighlight
-              underlayColor="#CCC"
-              style={styles.loginButton}
-              onPress={() =>
-                  navigate('TodoList')}
+            underlayColor="#CCC"
+            style={{
+              ...styles.loginButton,
+              backgroundColor: this.state.password === "" ? "#CBD2D9" : "#2B6ABF"
+            }}
+            onPress={() => navigate("TodoList")}
           >
-              <Text style={styles.loginButtonText}>Continue</Text>
+            <Text
+              style={{
+                ...styles.loginButtonText,
+                color: this.state.username === "" ? "#16191C" : "#fff"
+              }}
+            >
+              Continue
+            </Text>
           </TouchableHighlight>
         </View>
         <StatusBar style="auto" />

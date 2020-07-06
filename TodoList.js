@@ -18,7 +18,7 @@ global.Buffer = Buffer;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    fontFamily:'System',
+    fontFamily: "System",
     flexDirection: "column",
     justifyContent: "space-between",
     backgroundColor: "#16191C",
@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
     marginBottom: 34
   },
   addNewTaskButtonContainer: {
-    // marginBottom: 16
     paddingBottom: 50
   },
   helloText: {
@@ -242,12 +241,16 @@ export default class TodoList extends Component {
                   <Text style={styles.modalButtonText}>Cancel</Text>
                 </TouchableHighlight>
                 <TouchableHighlight
-                  style={{ ...styles.modalButton }}
+                  disabled={addTaskTitle == ""}
+                  style={{
+                    ...styles.modalButton,
+                    backgroundColor: addTaskTitle === "" ? "#CBD2D9" : "#2B6ABF"
+                  }}
                   onPress={() => {
                     this.addTask();
                   }}
                 >
-                  <Text style={styles.modalButtonText}>Save Task</Text>
+                  <Text style={{...styles.modalButtonText, color: addTaskTitle === "" ? "#16191C": "#fff"}}>Save Task</Text>
                 </TouchableHighlight>
               </View>
             </View>
