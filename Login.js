@@ -153,14 +153,19 @@ export default class Login extends Component {
             style={{
               ...styles.loginButton,
               backgroundColor:
-                this.state.password === "" ? "#CBD2D9" : "#2B6ABF"
+                this.state.username === "" || this.state.password === ""
+                  ? "#CBD2D9"
+                  : "#2B6ABF"
             }}
             onPress={() => navigate("TodoList")}
           >
             <Text
               style={{
                 ...styles.loginButtonText,
-                color: this.state.username === "" ? "#16191C" : "#fff"
+                color:
+                  this.state.username === "" || this.state.password === ""
+                    ? "#16191C"
+                    : "#fff"
               }}
             >
               Continue
