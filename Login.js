@@ -1,13 +1,12 @@
 import {
+  Image,
+  StatusBar,
   StyleSheet,
   Text,
-  View,
   TextInput,
-  Alert,
   TouchableHighlight,
-  Image
+  View
 } from "react-native";
-import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 
 const styles = StyleSheet.create({
@@ -109,6 +108,7 @@ export default class Login extends Component {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
         <View style={styles.greetingContainer}>
           <Image
             source={require("./assets/icon-email.png")}
@@ -152,7 +152,8 @@ export default class Login extends Component {
             underlayColor="#CCC"
             style={{
               ...styles.loginButton,
-              backgroundColor: this.state.password === "" ? "#CBD2D9" : "#2B6ABF"
+              backgroundColor:
+                this.state.password === "" ? "#CBD2D9" : "#2B6ABF"
             }}
             onPress={() => navigate("TodoList")}
           >

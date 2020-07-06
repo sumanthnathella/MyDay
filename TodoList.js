@@ -8,9 +8,9 @@ import {
   Text,
   TextInput,
   TouchableHighlight,
-  View
+  View,
+  StatusBar
 } from "react-native";
-import { StatusBar } from "expo-status-bar";
 import moment from "moment";
 import TodoCard from "./TodoCard.js";
 
@@ -177,6 +177,7 @@ export default class TodoList extends Component {
     const { modalVisible, addTaskTitle, addTaskTime } = this.state;
     return (
       <View style={styles.container}>
+        <StatusBar barStyle="light-content" />
         <View style={styles.greetingContainer}>
           <Text style={styles.helloText}>Hello!</Text>
           <Text style={styles.dateText}>
@@ -250,7 +251,14 @@ export default class TodoList extends Component {
                     this.addTask();
                   }}
                 >
-                  <Text style={{...styles.modalButtonText, color: addTaskTitle === "" ? "#16191C": "#fff"}}>Save Task</Text>
+                  <Text
+                    style={{
+                      ...styles.modalButtonText,
+                      color: addTaskTitle === "" ? "#16191C" : "#fff"
+                    }}
+                  >
+                    Save Task
+                  </Text>
                 </TouchableHighlight>
               </View>
             </View>

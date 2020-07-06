@@ -3,10 +3,11 @@ import {
   StyleSheet,
   Text,
   TouchableHighlight,
-  View
+  View,
+    StatusBar
 } from "react-native";
-import { StatusBar } from "expo-status-bar";
-import React from 'react';
+import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
   },
   greetingContainer: {
     fontSize: 18,
-    fontFamily: 'System',
+    fontFamily: "System",
     marginTop: 160
   },
   loginButtonsContainer: {
@@ -68,44 +69,47 @@ const styles = StyleSheet.create({
 });
 
 function Home(props) {
-  const { navigation } = props
+  const { navigation } = props;
   return (
-      <View style={styles.container}>
-        <View style={styles.greetingContainer}>
-          <Text style={styles.helloText}>Hello There! Welcome to</Text>
-          <Text style={styles.myDayText}>My Day.</Text>
-        </View>
-        <View style={styles.loginButtonsContainer}>
-          <TouchableHighlight
-            underlayColor="#CCC"
-            style={styles.loginButton}
-            onPress={logThis}
-          >
-            <View style={styles.loginButtonTextContainer}>
-              <Text style={styles.loginButtonText}>Continue with Google</Text>
-              <Image
-                source={require("./assets/icon-google.png")}
-                style={styles.ImageIconStyle}
-              />
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-            underlayColor="#CCC"
-            style={styles.loginButton}
-            onPress={() => navigation.navigate('Login')}
-          >
-            <View style={styles.loginButtonTextContainer}>
-              <Text style={styles.loginButtonText}>Continue with Email</Text>
-              <Image
-                source={require("./assets/icon-email.png")}
-                style={styles.ImageIconStyle}
-              />
-            </View>
-          </TouchableHighlight>
-        </View>
-        <StatusBar style="auto" />
+    <View style={styles.container}>
+      <StatusBar
+          barStyle="light-content"
+      />
+      <View style={styles.greetingContainer}>
+        <Text style={styles.helloText}>Hello There! Welcome to</Text>
+        <Text style={styles.myDayText}>My Day.</Text>
       </View>
-  )
+      <View style={styles.loginButtonsContainer}>
+        <TouchableHighlight
+          underlayColor="#CCC"
+          style={styles.loginButton}
+          onPress={logThis}
+        >
+          <View style={styles.loginButtonTextContainer}>
+            <Text style={styles.loginButtonText}>Continue with Google</Text>
+            <Image
+              source={require("./assets/icon-google.png")}
+              style={styles.ImageIconStyle}
+            />
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight
+          underlayColor="#CCC"
+          style={styles.loginButton}
+          onPress={() => navigation.navigate("Login")}
+        >
+          <View style={styles.loginButtonTextContainer}>
+            <Text style={styles.loginButtonText}>Continue with Email</Text>
+            <Image
+              source={require("./assets/icon-email.png")}
+              style={styles.ImageIconStyle}
+            />
+          </View>
+        </TouchableHighlight>
+      </View>
+      <StatusBar style="auto" />
+    </View>
+  );
 }
 
 const logThis = () => console.log("onPress");
