@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
   },
   greetingContainer: {
     fontFamily: "Cochin",
-    marginTop: 160
+    marginTop: 160,
+    marginBottom: 34
   },
   addNewTaskButtonContainer: {
     // marginBottom: 16
@@ -104,7 +105,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingTop: 36,
     marginBottom: 36,
-    borderTopWidth: 0.25,
     borderColor: "#9AA5B1"
   },
   modalButton: {
@@ -153,7 +153,12 @@ export default class TodoList extends Component {
     };
     // Alert.alert("New Task", `${todosfromState} + ${addTaskTitle}+ ${addTaskTime}`);
     todosfromState.push(newTodo);
-    this.setState({ todos: todosfromState, modalVisible: !modalVisible });
+    this.setState({
+      todos: todosfromState,
+      modalVisible: !modalVisible,
+      addTaskTitle: "",
+      addTaskTime: ""
+    });
   }
 
   setChecked(todo) {
@@ -230,6 +235,7 @@ export default class TodoList extends Component {
                     marginRight: 24
                   }}
                   onPress={() => {
+                    this.setState({ addTaskTitle: "", addTaskTime: "" });
                     this.setModalVisible(!modalVisible);
                   }}
                 >
