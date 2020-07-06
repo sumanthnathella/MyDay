@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
     fontSize: 40
   },
   greetingContainer: {
-    fontFamily: "Cochin",
+    fontSize: 18,
+    fontFamily: 'System',
     marginTop: 160
   },
   loginButtonsContainer: {

@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "#282A2E",
     flex: 1,
+    fontFamily:'System',
     paddingTop: 24,
     paddingBottom: 26,
     paddingRight: 20,

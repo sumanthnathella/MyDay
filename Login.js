@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   greetingContainer: {
     flexDirection: 'row',
-    fontFamily: "Cochin",
+    fontFamily: 'System',
     marginTop: 160
   },
   EmailIconStyle: {
@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   greetingTextContainer: {
-    marginLeft:24
+    marginLeft:24,
+    fontFamily: 'System',
   },
   continueText: {
     color: "#fff",

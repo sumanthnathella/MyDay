@@ -18,13 +18,13 @@ global.Buffer = Buffer;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    fontFamily:'System',
     flexDirection: "column",
     justifyContent: "space-between",
     backgroundColor: "#16191C",
     color: "#fff",
     paddingLeft: 47,
     paddingRight: 47,
-    fontFamily: "Al Nile",
     fontWeight: "900",
     fontSize: 40
   },
