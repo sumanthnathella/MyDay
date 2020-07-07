@@ -4,12 +4,18 @@
   "expo": {
     "name": "MyDay",
     "slug": "MyDay",
+    "icon": "./assets/appstore.png",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
-      "bundleIdentifier": "com.sumnewthings.MyDay"
+      "bundleIdentifier": "com.sumnewthings.MyDay",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.sumnewthings.MyDay",
+      "versionCode": 1
     }
   }
 }
