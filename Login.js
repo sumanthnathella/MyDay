@@ -150,6 +150,7 @@ export default class Login extends Component {
           </View>
           <TouchableHighlight
             underlayColor="#CCC"
+            disabled={this.state.username === "" || this.state.password === ""}
             style={{
               ...styles.loginButton,
               backgroundColor:
