@@ -3,14 +3,12 @@ import Buffer from "safe-buffer";
 import {
   FlatList,
   Modal,
-  SafeAreaView,
+  StatusBar,
   StyleSheet,
   Text,
   TextInput,
   TouchableHighlight,
-  View,
-  StatusBar,
-  ScrollView
+  View
 } from "react-native";
 import moment from "moment";
 import TodoCard from "./TodoCard.js";
@@ -34,10 +32,10 @@ const styles = StyleSheet.create({
     marginBottom: 34
   },
   addNewTaskButtonContainer: {
-    alignSelf:'center',
-    position: 'absolute',
+    alignSelf: "center",
+    position: "absolute",
     bottom: 0,
-    paddingBottom:20
+    paddingBottom: 20
   },
   helloText: {
     color: "#fff",
@@ -180,95 +178,96 @@ export default class TodoList extends Component {
     const { modalVisible, addTaskTitle, addTaskTime } = this.state;
     return (
       <View style={styles.container}>
-            <FlatList style={{paddingBottom:50}}
-                ListHeaderComponent={
-                  <View style={styles.greetingContainer}>
-                    <Text style={styles.helloText}>Hello!</Text>
-                    <Text style={styles.dateText}>
-                      Today is {this.state.date}. Let's make it count.
-                    </Text>
-                  </View>
-                }
-                data={this.state.todos}
-                renderItem={({ item }) => (
-                    <TodoCard todo={item} setChecked={this.setChecked.bind(this)} />
-                )}
-                keyExtractor={item => item.id.toString()}
-            />
+        <FlatList
+          style={{ paddingBottom: 50 }}
+          ListHeaderComponent={
+            <View style={styles.greetingContainer}>
+              <Text style={styles.helloText}>Hello!</Text>
+              <Text style={styles.dateText}>
+                Today is {this.state.date}. Let's make it count.
+              </Text>
+            </View>
+          }
+          data={this.state.todos}
+          renderItem={({ item }) => (
+            <TodoCard todo={item} setChecked={this.setChecked.bind(this)} />
+          )}
+          keyExtractor={item => item.id.toString()}
+        />
         <View style={styles.addNewTaskButtonContainer}>
           <TouchableHighlight
-              underlayColor="#CCC"
-              style={styles.addNewTaskButton}
-              onPress={() => {
-                this.setModalVisible(true);
-              }}
+            underlayColor="#CCC"
+            style={styles.addNewTaskButton}
+            onPress={() => {
+              this.setModalVisible(true);
+            }}
           >
             <Text style={styles.addNewTaskButtonText}>+ Add New Task</Text>
           </TouchableHighlight>
         </View>
         <Modal
-            animationType="slide"
-            transparent={true}
-            visible={modalVisible}
-            // onRequestClose={() => {
-            //   Alert.alert("Modal has been closed.");
-            // }}
+          animationType="slide"
+          transparent={true}
+          visible={modalVisible}
+          // onRequestClose={() => {
+          //   Alert.alert("Modal has been closed.");
+          // }}
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <Text style={styles.addNewTaskText}>Add New Task</Text>
               <TextInput
-                  placeholderTextColor={"#CBD2D9"}
-                  placeholder="Enter you task name"
-                  value={addTaskTitle}
-                  onChangeText={addTaskTitle =>
-                      this.setState({ addTaskTitle: addTaskTitle })
-                  }
-                  label="addTaskTitle"
-                  style={styles.input}
+                placeholderTextColor={"#CBD2D9"}
+                placeholder="Enter you task name"
+                value={addTaskTitle}
+                onChangeText={addTaskTitle =>
+                  this.setState({ addTaskTitle: addTaskTitle })
+                }
+                label="addTaskTitle"
+                style={styles.input}
               />
               <TextInput
-                  placeholderTextColor={"#CBD2D9"}
-                  placeholder="How long is this gonna take?"
-                  value={addTaskTime}
-                  onChangeText={addTaskTime =>
-                      this.setState({ addTaskTime: addTaskTime })
-                  }
-                  label="addTaskTime"
-                  style={styles.input}
+                placeholderTextColor={"#CBD2D9"}
+                placeholder="How long is this gonna take?"
+                value={addTaskTime}
+                onChangeText={addTaskTime =>
+                  this.setState({ addTaskTime: addTaskTime })
+                }
+                label="addTaskTime"
+                style={styles.input}
               />
               <View style={styles.modalButtonContainer}>
                 <TouchableHighlight
-                    style={{
-                      ...styles.modalButton,
-                      width: 118,
-                      backgroundColor: "#282A2E",
-                      borderWidth: 1,
-                      borderColor: "#9AA5B1",
-                      marginRight: 24
-                    }}
-                    onPress={() => {
-                      this.setState({ addTaskTitle: "", addTaskTime: "" });
-                      this.setModalVisible(!modalVisible);
-                    }}
+                  style={{
+                    ...styles.modalButton,
+                    width: 118,
+                    backgroundColor: "#282A2E",
+                    borderWidth: 1,
+                    borderColor: "#9AA5B1",
+                    marginRight: 24
+                  }}
+                  onPress={() => {
+                    this.setState({ addTaskTitle: "", addTaskTime: "" });
+                    this.setModalVisible(!modalVisible);
+                  }}
                 >
                   <Text style={styles.modalButtonText}>Cancel</Text>
                 </TouchableHighlight>
                 <TouchableHighlight
-                    disabled={addTaskTitle == ""}
-                    style={{
-                      ...styles.modalButton,
-                      backgroundColor: addTaskTitle === "" ? "#CBD2D9" : "#2B6ABF"
-                    }}
-                    onPress={() => {
-                      this.addTask();
-                    }}
+                  disabled={addTaskTitle == ""}
+                  style={{
+                    ...styles.modalButton,
+                    backgroundColor: addTaskTitle === "" ? "#CBD2D9" : "#2B6ABF"
+                  }}
+                  onPress={() => {
+                    this.addTask();
+                  }}
                 >
                   <Text
-                      style={{
-                        ...styles.modalButtonText,
-                        color: addTaskTitle === "" ? "#16191C" : "#fff"
-                      }}
+                    style={{
+                      ...styles.modalButtonText,
+                      color: addTaskTitle === "" ? "#16191C" : "#fff"
+                    }}
                   >
                     Save Task
                   </Text>
