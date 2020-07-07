@@ -5,6 +5,10 @@
     "name": "MyDay",
     "slug": "MyDay",
     "icon": "./assets/appstore.png",
+    "splash": {
+      "image": "./assets/appstore.png",
+      "backgroundColor": "#16191C"
+    },
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
